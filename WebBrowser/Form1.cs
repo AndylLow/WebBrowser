@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-System.Windows.Forms.Control;
 
 namespace WebBrowser
 {
