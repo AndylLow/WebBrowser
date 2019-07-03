@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+System.Windows.Forms.Control;
 
 namespace WebBrowser
 {
@@ -50,6 +51,31 @@ namespace WebBrowser
         {
             string uurl = toolStripTextBox1.Text;
             webBrowser1.Navigate(uurl);
+        }
+        private void tabControl1_Click(object sender, EventArgs e)
+        {
+            var p = tabControl1.SelectedTab;
+            if (p.Text == "New Tab")
+            {
+                string Title= "TabPage " + (tabControl1.TabCount).ToString();
+                tabControl1.SelectedTab.Text = Title;
+                tabControl1.SelectedTab.Controls.Add(webBrowser1);
+                webBrowser1.Navigate("https://www.google.com");
+
+                TabPage myTabPage = new TabPage("New Tab");
+                tabControl1.TabPages.Add(myTabPage);
+            }
+            else
+            {
+                tabControl1.SelectedTab.Controls.Add(toolStrip1);
+                tabControl1.SelectedTab.Controls.Add(webBrowser1);
+                toolStripTextBox1.Text = webBrowser1.Url.ToString();
+            }
+        }
+
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
         }
     }
 }
