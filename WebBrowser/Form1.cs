@@ -16,6 +16,7 @@ namespace WebBrowser
         {
             InitializeComponent();
             webBrowser1.Navigate("https://www.google.com");
+            toolStripTextBox1.Text = "https://www.google.com";
             tabControl1.Size = this.Size;
             tabControl1.Width = tabControl1.Width - 10;
             tabControl1.Height = tabControl1.Height - 35;
@@ -53,6 +54,7 @@ namespace WebBrowser
         }
         private void tabControl1_Click(object sender, EventArgs e)
         {
+            /*
             var p = tabControl1.SelectedTab;
             if (p.Text == "New Tab")
             {
@@ -70,11 +72,17 @@ namespace WebBrowser
                 tabControl1.SelectedTab.Controls.Add(webBrowser1);
                 toolStripTextBox1.Text = webBrowser1.Url.ToString();
             }
+            */
         }
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
             
+        }
+
+        private void webBrowser1_Navigating(object sender, WebBrowserNavigatingEventArgs e)
+        {
+            toolStripTextBox1.Text = e.Url.ToString();
         }
     }
 }
